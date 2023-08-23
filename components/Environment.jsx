@@ -5,7 +5,6 @@ import {
 	ScrollControls,
 	useHelper,
 	PerspectiveCamera,
-	OrbitControls
 } from "@react-three/drei";
 import Models from "./Models";
 import Project from "./Project";
@@ -15,7 +14,7 @@ const Section = ({children}) => {
 	return (
 	  <motion.section
 		className={`
- 	 max-w-screen-2xl mx-auto
+ 	 md:max-w-screen-2xl mx-auto
 	flex flex-col items-start justify-center
 	`}
 		initial={{
@@ -42,14 +41,13 @@ const Environment = () => {
 
 	return (
 		<>
-			
 			<PerspectiveCamera makeDefault position={[0, 0, 6]} />
 			<directionalLight position={[0, 0, 100]} intensity={5} />
 			<ambientLight intensity={0.3} />
 			<ScrollControls pages={5} damping={0.3}>
 				<Scroll html>
 					<section className='h-screen flex flex-col justify-center text-white p-5'>
-						<div className='w-full grid grid-cols-4 select-none text-6xl md:text-[15rem] 2xl:text-[25rem]'>
+						<div className='w-full grid grid-cols-4 select-none text-6xl md:text-[8rem] lg:text-[12rem] xl:text-[15rem] 2xl:text-[18rem] 3xl:text-[20rem] 4xl:text-[25rem]'>
 							<div className='text-center col-span-2 '>
 								Hello
 							</div>
@@ -70,10 +68,6 @@ const Environment = () => {
 									My name is LEO
 								</h2>
 								<div className="md:pl-4 md:mt-10">
-									{/* <ul className="text-4xl">
-										<li>Software Developer</li>
-										<li>Located Los Angeles, CA</li>
-									</ul> */}
 									<SkillSection />
 								</div>
 							</div>
