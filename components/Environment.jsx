@@ -52,7 +52,7 @@ const Environment = () => {
 								Hello
 							</div>
 							<div
-								className={`text-start text-transparent hover:text-white`}
+								className={`text-start text-transparent text-white md:text-transparent	 hover:text-white`}
 							>
 								World
 							</div>
@@ -64,10 +64,10 @@ const Environment = () => {
 					<section className='h-screen flex flex-col justify-center text-white p-5'>
 						<div className='w-full grid grid-cols-2'>
 							<div className='text-lg md:p-10 max-w-4xl mx-auto h-screen'>
-								<h2 className='text-6xl md:text-9xl 2xl:text-[13rem] mb-5'>
+								<h2 className='text-6xl md:text-9xl xl:text-[8rem] 3xl:text-[10rem] 4xl:text-[13rem] mb-5'>
 									My name is LEO
 								</h2>
-								<div className="md:pl-4 md:mt-10">
+								<div className="md:pl-4 mt-4 2xl:mt-10">
 									<SkillSection />
 								</div>
 							</div>
