@@ -10,6 +10,18 @@ import { Canvas } from "@react-three/fiber";
 import { createClient } from "@/prismicio";
 import DocumentToArticleMapper  from '@/interface/document';
 
+const ImageCarousel = ({previousSlide, nextSlide, image_url}) => {
+	return (
+		<div id="slide1" className="carousel-item relative w-full">
+			<img src={image_url} className="w-full" alt="Screenshot of the project" />
+			<div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+			<a href={previousSlide} className="btn btn-circle">❮</a> 
+			<a href={nextSlide} className="btn btn-circle">❯</a>
+			</div>
+		</div> 
+	)
+}
+
 
 const ProjectDetails= ({ project }) => {
 	const router = useRouter();
@@ -26,15 +38,15 @@ const ProjectDetails= ({ project }) => {
 	}, []);
 
 	return (
-		<div className='grid md:grid-cols-2 outline-none h-auto sm:h-screen w-full z-0'>
-			<div className='h-auto'>
+		<div className='grid md:grid-cols-2 outline-none h-screen w-full z-0'>
+			<div className='h-80 md:h-full w-screen md:w-full z-0'>
 				<Canvas>
 					<color args={["#6887a3"]} attach='background' />
 					<Environment preset='apartment' />
 					<ambientLight intensity={4} />
 					<PresentationControls
 						global
-						polar={[-0.3, 0.1]}
+						polar={[-0.2, 0.1]}
 						rotation={[0.13, 0.1, 0]}
 						azimuth={[-1, 1]}
 						config={{ mass: 2, tension: 400 }}
@@ -52,9 +64,14 @@ const ProjectDetails= ({ project }) => {
 					/>
 				</Canvas>
 			</div>
-			<div className='h-full w-full bg-base text-white p-5 md:px-10 md:py-16'>
-				<h1 className='text-9xl mb-10'>{project.title}</h1>
-				<div>{project.description}</div>
+			<div className='h-full w-full bg-secondary text-white p-5 md:px-10 lg:py-16'>
+				<h1 className='text-4xl lg:text-9xl my-5'>{project.title}</h1>
+				<div className="carousel w-full">
+					{project.images.map((img) => {
+						<ImageCarousel source={img.url} previousSlide={''} nextSlide={''}/>
+					})}
+				</div>
+				<div className="">{project.description}</div>
 			</div>
 		</div>
 	);
@@ -80,7 +97,7 @@ export const getStaticPaths = async () => {
 				},
 			},
 		],
-		fallback: true, // false or "blocking"
+		fallback: true,
 	};
 };
 

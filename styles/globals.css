@@ -15,7 +15,7 @@ canvas {
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: white;
+  background-color: #6887a3;
   transform-origin: right;
 }
 
@@ -24,6 +24,6 @@ canvas {
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: white;
+  background-color: #6887a3;
   transform-origin: left;
 }
