@@ -37,6 +37,8 @@ const ProjectDetails= ({ project }) => {
 		}
 	}, []);
 
+	console.log(project);
+
 	return (
 		<div className='grid md:grid-cols-2 outline-none h-screen w-full z-0'>
 			<div className='h-80 md:h-full w-screen md:w-full z-0'>
@@ -64,14 +66,23 @@ const ProjectDetails= ({ project }) => {
 					/>
 				</Canvas>
 			</div>
-			<div className='h-full w-full bg-secondary text-white p-5 md:px-10 lg:py-16'>
+			<div className='h-full w-full bg-neutral text-white p-5 md:px-10 lg:py-16'>
 				<h1 className='text-4xl lg:text-9xl my-5'>{project.title}</h1>
-				<div className="carousel w-full">
-					{project.images.map((img) => {
-						<ImageCarousel source={img.url} previousSlide={''} nextSlide={''}/>
+				<div className='carousel w-full'>
+					{project.images.map((img, i) => {
+						const id = project.images.indexOf(img);
+						console.log(img.url);
+						return (
+							<ImageCarousel
+								key={i}
+								image_url={img.url}
+								previousSlide={`#${(id - 1).toString()}`}
+								nextSlide={`#${(id + 1).toString()}`}
+							/>
+						);
 					})}
 				</div>
-				<div className="">{project.description}</div>
+				<div className=''>{project.description}</div>
 			</div>
 		</div>
 	);
