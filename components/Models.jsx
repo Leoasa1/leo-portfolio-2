@@ -13,6 +13,7 @@ const Models = () => {
 	const tl = useRef(null);
 	const projectRefs = {
 		duckBoyz: useRef(),
+		rentals: useRef(),
 		movieNight: useRef(),
 		allInvest: useRef(),
 	};
@@ -41,7 +42,7 @@ const Models = () => {
 
 	useLayoutEffect(() => {
 		tl.current = gsap.timeline();
-
+		console.log(tl.current)
 		// Earth Rotation to LA
 		tl.current.to(
 			earthRef.current.rotation,
@@ -53,6 +54,7 @@ const Models = () => {
 			},
 			0
 		);
+
 		// tl.current.to(houseRef.current.children[0].material, { opacity: 0, duration: 0.5 }, 0);
 		tl.current.to(
 			earthRef.current.rotation,
@@ -125,17 +127,17 @@ const Models = () => {
 		}
 
 		tl.current.to(
-			projectRefs.movieNight.current.position,
+			projectRefs.rentals.current.position,
 			{
 				duration: 0.25,
 				z: 3,
 			},
-			1.5
+			1.6
 		);
 
-		if (projectRefs.movieNight.current) {
+		if (projectRefs.rentals.current) {
 			tl.current.to(
-				projectRefs.movieNight.current.position,
+				projectRefs.rentals.current.position,
 				{
 					duration: 0.5,
 					z: -10.1,
@@ -145,12 +147,32 @@ const Models = () => {
 		}
 
 		tl.current.to(
+			projectRefs.movieNight.current.position,
+			{
+				duration: 0.25,
+				z: 3,
+			},
+			2.25
+		);
+
+		if (projectRefs.movieNight.current) {
+			tl.current.to(
+				projectRefs.movieNight.current.position,
+				{
+					duration: 0.5,
+					z: -10.1,
+				},
+				2.75
+			);
+		}
+
+		tl.current.to(
 			projectRefs.allInvest.current.position,
 			{
 				duration: 0.25,
 				z: 3,
 			},
-			2.2
+			3
 		);
 	}, []);
 
@@ -190,6 +212,10 @@ const Models = () => {
 			<Project
 				reference={projectRefs.duckBoyz}
 				image={"/images/duckboyz.jpeg"}
+			/>
+			<Project
+				reference={projectRefs.rentals}
+				image={"/images/rentals.jpg"}
 			/>
 			<Project
 				reference={projectRefs.movieNight}

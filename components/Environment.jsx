@@ -44,7 +44,7 @@ const Environment = () => {
 			<PerspectiveCamera makeDefault position={[0, 0, 6]} />
 			<directionalLight position={[0, 0, 100]} intensity={5} />
 			<ambientLight intensity={0.3} />
-			<ScrollControls pages={5} damping={0.3}>
+			<ScrollControls pages={6} damping={0.3}>
 				<Scroll html>
 					<section className='h-screen flex flex-col justify-center text-white p-5'>
 						<div className='w-full grid grid-cols-4 select-none text-6xl md:text-[8rem] lg:text-[12rem] xl:text-[15rem] 2xl:text-[18rem] 3xl:text-[20rem] 4xl:text-[25rem]'>
@@ -81,6 +81,13 @@ const Environment = () => {
 						link={"duck-boyz"}
 					/>
 					<Project
+						title={"Rentals"}
+						description={
+							"Rentals is a website designed to help college students to find rental properties near their schools."
+						}
+						link={"rentals"}
+					/>
+					<Project
 						title={"Movie Night"}
 						description={
 							"MovieNight website has a list of movies to help you plan for movie nights with friends and families."
@@ -114,15 +121,15 @@ const skills = [
 	},
 	{
 		title: "Threejs",
-		level: 60
+		level: 50
 	},
 	{
 		title: "Nodejs",
-		level: 80
+		level: 60
 	},
 	{
 		title: "Python / Scripting",
-		level: 50
+		level: 40
 	}
 ]
 

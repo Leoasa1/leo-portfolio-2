@@ -108,6 +108,11 @@ export const getStaticPaths = async () => {
 			},
 			{
 				params: {
+					slug: "rentals",
+				},
+			},
+			{
+				params: {
 					slug: "movie-night",
 				},
 			},
