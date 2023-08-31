@@ -10,7 +10,7 @@ const Layout = ({ title, description, children }) => {
 				<meta name='description' content={description} />
 			</Head>
 			<Navbar />
-			<main>
+			<main translate="no">
 				{children}
 			</main>
 		</>
