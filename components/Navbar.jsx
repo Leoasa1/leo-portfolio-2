@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
+// Navbar component with links to home and about page
 const Navbar= () => {
 	return (
 		<div className='fixed z-10 navbar text-white px-5 md:px-10 w-screen items-center'>

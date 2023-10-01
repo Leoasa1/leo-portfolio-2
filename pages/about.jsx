@@ -1,5 +1,6 @@
 import React from 'react'
 
+// Bio row component 
 const BioRow = ({year, description}) => {
     return (
         <div className='flex items-center text-lg lg:text-2xl gap-4 my-2'>
@@ -9,6 +10,7 @@ const BioRow = ({year, description}) => {
     )
 } 
 
+// About page component for displaying personal info
 const About = () => {
   return (
 		<div className='h-screen bg-[#101929]'>

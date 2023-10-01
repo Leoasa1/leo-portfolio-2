@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link';
 
+// Project component for title, description and link to project page
 const Project = ({ description, title, link }) => {
 	return (
 		<section className='h-screen w-screen flex flex-col justify-center '>

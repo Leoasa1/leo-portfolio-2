@@ -3,6 +3,7 @@ import { useGLTF } from "@react-three/drei";
 import { Html } from "@react-three/drei";
 import Styles from "./Styles.module.scss";
 
+// 3D Computer model component for displaying project page
 export default function Model({url}) {
 	const computer = useGLTF(
 		"https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf"

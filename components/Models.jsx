@@ -1,12 +1,10 @@
 import React, { useRef, useLayoutEffect } from "react";
 import { useFrame } from "@react-three/fiber";
-import { useScroll, useTexture, useGLTF } from "@react-three/drei";
+import { useScroll, useTexture } from "@react-three/drei";
 import { gsap } from "gsap";
 
-export const FLOOR_HEIGHT = 2.3;
-export const NB_FLOORS = 3;
-
 const Models = () => {
+	// Initialize reference variables
 	const earthRef = useRef();
 	const earthMeshRef = useRef();
 	const cloudMeshRef = useRef();
@@ -18,31 +16,34 @@ const Models = () => {
 		allInvest: useRef(),
 	};
 
-	const group = useRef();
-	const house = useGLTF(
-		"https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/library-large/model.gltf"
-	);
-
+	// Initialize texture material for earth model
 	const earthTextures = useTexture({
 		map: "/images/2k_earth_day.jpeg",
 		normalMap: "/images/2k_earth_normal_map.jpeg",
 	});
 	const specular = useTexture("/images/2k_earth_specular_map.jpeg");
+
+	// Initialize texture material for cloud model
 	const cloudTexture = useTexture({
 		map: "/images/2k_earth_clouds.jpg",
 	});
 
+	// Initialize scroll variable
 	const scroll = useScroll();
 
+	// Use the useFrame hook to perform actions on each animation frame
 	useFrame(() => {
+		// Check if the tl (Timeline) ref exists
 		if (tl.current) {
+			// Seek to a specific time in the animation based on the scroll offset
 			tl.current.seek(scroll.offset * tl.current.duration());
 		}
 	});
 
+	// Animate models with gsap timeline
 	useLayoutEffect(() => {
 		tl.current = gsap.timeline();
-		console.log(tl.current)
+		console.log(tl.current);
 		// Earth Rotation to LA
 		tl.current.to(
 			earthRef.current.rotation,
@@ -106,6 +107,7 @@ const Models = () => {
 			0.75
 		);
 
+		// Project-1 screenshot move into frame on page 3
 		tl.current.to(
 			projectRefs.duckBoyz.current.position,
 			{
@@ -115,6 +117,7 @@ const Models = () => {
 			1
 		);
 
+		// Project-1 screenshot move out frame on page 4
 		if (projectRefs.duckBoyz.current) {
 			tl.current.to(
 				projectRefs.duckBoyz.current.position,
@@ -126,6 +129,7 @@ const Models = () => {
 			);
 		}
 
+		// Project-2 screenshot move into frame on page 4
 		tl.current.to(
 			projectRefs.rentals.current.position,
 			{
@@ -135,6 +139,7 @@ const Models = () => {
 			1.6
 		);
 
+		// Project-2 screenshot move out frame on page 5
 		if (projectRefs.rentals.current) {
 			tl.current.to(
 				projectRefs.rentals.current.position,
@@ -146,6 +151,7 @@ const Models = () => {
 			);
 		}
 
+		// Project-3 screenshot move into frame on page 5
 		tl.current.to(
 			projectRefs.movieNight.current.position,
 			{
@@ -155,6 +161,7 @@ const Models = () => {
 			2.25
 		);
 
+		// Project-3 screenshot move out frame on page 6
 		if (projectRefs.movieNight.current) {
 			tl.current.to(
 				projectRefs.movieNight.current.position,
@@ -166,6 +173,7 @@ const Models = () => {
 			);
 		}
 
+		// Project-4 screenshot move into frame on page 6
 		tl.current.to(
 			projectRefs.allInvest.current.position,
 			{
@@ -176,15 +184,9 @@ const Models = () => {
 		);
 	}, []);
 
-	// if (!libraryLargeMesh) {
-	// 	return null; // Return something appropriate if the mesh isn't found
-	// }
-
-	console.log(house)
-
 	return (
 		<>
-			<group ref={earthRef} position={[2, 0, 0]} dispose={null} >
+			<group ref={earthRef} position={[2, 0, 0]} dispose={null}>
 				<mesh ref={earthMeshRef} scale={2}>
 					<sphereGeometry args={[1, 100, 100]} />
 					<meshLambertMaterial
@@ -201,14 +203,8 @@ const Models = () => {
 						opacity={0.4}
 					/>
 				</mesh>
-				{/* <group ref={group}  dispose={null} position={[-1, 1, 2]}>
-					<mesh
-						geometry={(libraryLargeMesh as any).geometry}
-						material={(libraryLargeMesh as any).material}
-					/>
-				</group> */}
 			</group>
-			
+
 			<Project
 				reference={projectRefs.duckBoyz}
 				image={"/images/duckboyz.jpeg"}
@@ -229,7 +225,7 @@ const Models = () => {
 	);
 };
 
-
+// Project component for displaying website screenshots
 const Project = ({ reference, image }) => {
 	const meshTexture = useTexture(image);
 
